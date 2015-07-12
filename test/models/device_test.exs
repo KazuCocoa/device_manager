@@ -1,5 +1,5 @@
 defmodule DeviceManager.DeviceTest do
-  use DeviceManager.ModelCase
+  use DeviceManager.ModelCase, async: true
 
   alias DeviceManager.Device
 
