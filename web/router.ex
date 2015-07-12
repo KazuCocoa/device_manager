@@ -16,6 +16,7 @@ defmodule DeviceManager.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/devices", DeviceController
   end
 
   # Other scopes may use custom stacks.
