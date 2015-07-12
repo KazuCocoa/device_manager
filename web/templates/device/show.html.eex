@@ -1,0 +1,37 @@
+<h2>Show device</h2>
+
+<ul>
+
+  <li>
+    <strong>Device name:</strong>
+    <%= @device.device_name %>
+  </li>
+
+  <li>
+    <strong>Device type:</strong>
+    <%= @device.device_type %>
+  </li>
+
+  <li>
+    <strong>Os:</strong>
+    <%= @device.os %>
+  </li>
+
+  <li>
+    <strong>Os version:</strong>
+    <%= @device.os_version %>
+  </li>
+
+  <li>
+    <strong>Device:</strong>
+    <%= @device.device_id %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @device.description %>
+  </li>
+
+</ul>
+
+<%= link "Back", to: device_path(@conn, :index) %>

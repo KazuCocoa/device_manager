@@ -1,0 +1,36 @@
+<h2>Listing devices</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Device name</th>
+      <th>Device type</th>
+      <th>Os</th>
+      <th>Os version</th>
+      <th>Device</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for device <- @devices do %>
+    <tr>
+      <td><%= device.device_name %></td>
+      <td><%= device.device_type %></td>
+      <td><%= device.os %></td>
+      <td><%= device.os_version %></td>
+      <td><%= device.device_id %></td>
+      <td><%= device.description %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: device_path(@conn, :show, device), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: device_path(@conn, :edit, device), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: device_path(@conn, :delete, device), method: :delete, class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New device", to: device_path(@conn, :new) %>
