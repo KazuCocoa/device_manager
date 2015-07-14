@@ -3,7 +3,7 @@ defmodule DeviceManager.DeviceTest do
 
   alias DeviceManager.Device
 
-  @valid_attrs %{description: "some content", device_id: "some content", device_name: "some content", device_type: "some content", os: "iOS", os_version: "some content"}
+  @valid_attrs %{rental_id: 1234, description: "some content", device_name: "some content", device_type: "some content", os: "iOS", os_version: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

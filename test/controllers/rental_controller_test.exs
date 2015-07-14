@@ -2,7 +2,7 @@ defmodule DeviceManager.RentalControllerTest do
   use DeviceManager.ConnCase
 
   alias DeviceManager.Rental
-  @valid_attrs %{device_name: "some content", is_rentaled: true, who: "some content"}
+  @valid_attrs %{device_id: 1234, device_name: "some content", is_rentaled: true, who: "some content"}
   @invalid_attrs %{}
 
   setup do

@@ -3,6 +3,7 @@ defmodule DeviceManager.Repo.Migrations.CreateRental do
 
   def change do
     create table(:rental) do
+      add :device_id, :integer
       add :device_name, :string
       add :who, :string
       add :is_rentaled, :boolean, default: false
