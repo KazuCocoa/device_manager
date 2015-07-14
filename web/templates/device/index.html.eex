@@ -20,7 +20,6 @@
       <td><%= device.device_type %></td>
       <td><%= device.os %></td>
       <td><%= device.os_version %></td>
-      <td><%= device.device_id %></td>
       <td><%= device.description %></td>
 
       <td class="text-right">

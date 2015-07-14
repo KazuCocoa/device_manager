@@ -18,11 +18,11 @@ defmodule DeviceManager.Router do
     get "/", PageController, :index
     # forward "/", DeviceController, :index
     resources "/devices", DeviceController
-    resources "/rental", RentalController
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", DeviceManager do
-  #   pipe_through :api
-  # end
+  scope "/api", DeviceManager do
+    pipe_through :api
+    resources "/rental", RentalController
+  end
 end

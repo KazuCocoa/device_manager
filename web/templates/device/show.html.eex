@@ -23,11 +23,6 @@
   </li>
 
   <li>
-    <strong>Device:</strong>
-    <%= @device.device_id %>
-  </li>
-
-  <li>
     <strong>Description:</strong>
     <%= @device.description %>
   </li>

@@ -10,7 +10,7 @@ defmodule DeviceManager.Rental do
     timestamps
   end
 
-  @required_fields ~w(device_id device_name who is_rentaled)
+  @required_fields ~w(device_name who is_rentaled)
   @optional_fields ~w()
 
   @doc """

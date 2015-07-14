@@ -8,11 +8,11 @@ defmodule DeviceManager.Device do
     field :os_version, :string
     field :description, :string
 
-    has_many :rentals, DeviceManager.Rental, foreign_key: :rental_id
+    has_one :rentals, DeviceManager.Rental, foreign_key: :rental_id
     timestamps
   end
 
-  @required_fields ~w(rental_id device_name device_type os os_version)
+  @required_fields ~w(device_name device_type os os_version)
   @optional_fields ~w(description)
 
   @doc """
