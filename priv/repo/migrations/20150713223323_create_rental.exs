@@ -10,6 +10,7 @@ defmodule DeviceManager.Repo.Migrations.CreateRental do
 
       timestamps
     end
+    create index(:rental, [:device_id])
 
   end
 end

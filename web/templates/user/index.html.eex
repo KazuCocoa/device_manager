@@ -1,0 +1,32 @@
+<h2>Listing users</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>User name</th>
+      <th>User sex</th>
+
+      <th>os</th>
+      <th>device name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.user_name %></td>
+      <td><%= user.user_sex %></td>
+      <td><%= user.device.os %></td>
+      <td><%= user.device.device_name %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New user", to: user_path(@conn, :new) %>

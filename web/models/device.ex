@@ -9,6 +9,8 @@ defmodule DeviceManager.Device do
     field :description, :string
 
     has_one :rentals, DeviceManager.Rental, foreign_key: :rental_id
+    has_one :user, DeviceManager.User, foreign_key: :user_id
+
     timestamps
   end
 
