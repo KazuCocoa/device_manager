@@ -45,7 +45,7 @@ defmodule DeviceManager.UserControllerTest do
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
-    device = Repo.insert! @device_attrs
+    Repo.insert! @device_attrs
 
     assert_raise Ecto.NoResultsError, fn ->
       get conn, user_path(conn, :show, -1)
