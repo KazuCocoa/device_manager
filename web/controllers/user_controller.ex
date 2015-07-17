@@ -31,8 +31,9 @@ defmodule DeviceManager.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    # user = Repo.get!(User, id)
-    user = DeviceManager.User |> Repo.get(id) |> Repo.preload [:device]
+    user = DeviceManager.User
+           |>  DeviceManager.Repo.get!(id)
+           |> DeviceManager.Repo.preload(:device)
     render(conn, "show.html", user: user)
   end
 

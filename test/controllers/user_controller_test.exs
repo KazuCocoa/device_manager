@@ -5,7 +5,7 @@ defmodule DeviceManager.UserControllerTest do
   @valid_attrs %{device_id: 1, user_name: "some content", user_sex: "some content"}
   @invalid_attrs %{}
 
-  @device_attrs %{description: "some content", device_name: "some content", device_type: "some content", os: "Android", os_version: "some content"}
+  @device_attrs %DeviceManager.Device{description: "some content", device_name: "some content", device_type: "some content", os: "Android", os_version: "some content"}
 
   setup do
     conn = conn()
@@ -34,12 +34,19 @@ defmodule DeviceManager.UserControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
+    device = Repo.insert! @device_attrs
+
     user = Repo.insert! %User{}
+    user = %{user | device_id: device.id}
+    user = Repo.update! user
+
     conn = get conn, user_path(conn, :show, user)
     assert html_response(conn, 200) =~ "Show user"
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do
+    device = Repo.insert! @device_attrs
+
     assert_raise Ecto.NoResultsError, fn ->
       get conn, user_path(conn, :show, -1)
     end
