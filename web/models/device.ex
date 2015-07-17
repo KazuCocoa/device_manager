@@ -6,13 +6,15 @@ defmodule DeviceManager.Device do
     field :device_type, :string
     field :os, :string
     field :os_version, :string
-    field :device_id, :string
     field :description, :string
+
+    has_one :rentals, DeviceManager.Rental, foreign_key: :rental_id
+    has_one :user, DeviceManager.User, foreign_key: :user_id
 
     timestamps
   end
 
-  @required_fields ~w(device_name device_type os os_version device_id)
+  @required_fields ~w(device_name device_type os os_version)
   @optional_fields ~w(description)
 
   @doc """

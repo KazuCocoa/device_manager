@@ -2,7 +2,7 @@ defmodule DeviceManager.DeviceControllerTest do
   use DeviceManager.ConnCase
 
   alias DeviceManager.Device
-  @valid_attrs %{description: "some content", device_id: "some content", device_name: "some content", device_type: "some content", os: "Android", os_version: "some content"}
+  @valid_attrs %{description: "some content", device_name: "some content", device_type: "some content", os: "Android", os_version: "some content"}
   @invalid_attrs %{}
 
   setup do

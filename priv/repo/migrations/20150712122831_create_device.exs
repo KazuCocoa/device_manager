@@ -7,11 +7,13 @@ defmodule DeviceManager.Repo.Migrations.CreateDevice do
       add :device_type, :string
       add :os, :string
       add :os_version, :string
-      add :device_id, :string
       add :description, :string
+      add :rental_id, :integer
+      add :user_id, :integer
 
       timestamps
     end
+    create index(:devices, [:rental_id])
 
   end
 end
