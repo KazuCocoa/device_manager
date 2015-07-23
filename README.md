@@ -12,4 +12,4 @@ $ mix phoenix.gen.html Device devices device_name:string device_type:string os:s
 
 
 
-$ env MIX_ENV=text mix ecto.drop
+$ env MIX_ENV=test mix ecto.drop

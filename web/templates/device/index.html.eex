@@ -7,8 +7,8 @@
       <th>Device type</th>
       <th>Os</th>
       <th>Os version</th>
-      <th>Device</th>
       <th>Description</th>
+      <th>user_name</th>
 
       <th></th>
     </tr>
@@ -21,6 +21,7 @@
       <td><%= device.os %></td>
       <td><%= device.os_version %></td>
       <td><%= device.description %></td>
+      <td><%= device.user.user_name %></td>
 
       <td class="text-right">
         <%= link "Show", to: device_path(@conn, :show, device), class: "btn btn-default btn-xs" %>

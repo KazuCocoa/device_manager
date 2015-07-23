@@ -2,8 +2,11 @@ defmodule DeviceManager.DeviceControllerTest do
   use DeviceManager.ConnCase
 
   alias DeviceManager.Device
+  alias DeviceManager.User
   @valid_attrs %{description: "some content", device_name: "some content", device_type: "some content", os: "Android", os_version: "some content"}
   @invalid_attrs %{}
+
+  @user_attrs %User{device_id: 1, user_name: "some content", user_sex: "some content"}
 
   setup do
     conn = conn()
@@ -14,6 +17,13 @@ defmodule DeviceManager.DeviceControllerTest do
     conn = get conn, device_path(conn, :index)
     assert html_response(conn, 200) =~ "Listing devices"
   end
+
+  test "lists all entries on index after create items.", %{conn: conn} do
+    post conn, device_path(conn, :create), device: @valid_attrs
+    conn = get conn, device_path(conn, :index)
+    assert html_response(conn, 200) =~ "Listing devices"
+  end
+
 
   test "renders form for new resources", %{conn: conn} do
     conn = get conn, device_path(conn, :new)
@@ -63,7 +73,9 @@ defmodule DeviceManager.DeviceControllerTest do
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    device = Repo.insert! %Device{}
+    post conn, device_path(conn, :create), device: @valid_attrs
+    device = Repo.get_by(Device, @valid_attrs)
+
     conn = delete conn, device_path(conn, :delete, device)
     assert redirected_to(conn) == device_path(conn, :index)
     refute Repo.get(Device, device.id)

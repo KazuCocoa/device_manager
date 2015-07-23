@@ -2,11 +2,13 @@ defmodule DeviceManager.DeviceController do
   use DeviceManager.Web, :controller
 
   alias DeviceManager.Device
+  alias DeviceManager.User
 
   plug :scrub_params, "device" when action in [:create, :update]
 
   def index(conn, _params) do
     devices = Repo.all(Device)
+              |> Repo.preload(:user)
     render(conn, "index.html", devices: devices)
   end
 
@@ -19,7 +21,11 @@ defmodule DeviceManager.DeviceController do
     changeset = Device.changeset(%Device{}, device_params)
 
     if changeset.valid? do
-      Repo.insert!(changeset)
+      Repo.transaction(fn->
+        device = Repo.insert!(changeset)
+        user = Repo.insert! %User{device_id: device.id, user_name: "your name", user_sex: "male"}
+        device = Repo.update! %Device{device | user: user}
+      end)
 
       conn
       |> put_flash(:info, "Device created successfully.")
@@ -57,7 +63,12 @@ defmodule DeviceManager.DeviceController do
 
   def delete(conn, %{"id" => id}) do
     device = Repo.get!(Device, id)
-    Repo.delete!(device)
+             |> Repo.preload(:user)
+    user = Repo.get!(User, device.user.id)
+    Repo.transaction(fn->
+      Repo.delete!(device)
+      Repo.delete!(user)
+    end)
 
     conn
     |> put_flash(:info, "Device deleted successfully.")

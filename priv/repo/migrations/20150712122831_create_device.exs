@@ -13,6 +13,7 @@ defmodule DeviceManager.Repo.Migrations.CreateDevice do
 
       timestamps
     end
+    create index(:devices, [:user_id])
     create index(:devices, [:rental_id])
 
   end
