@@ -1,3 +1,5 @@
+This repository is my practice for phoenix and Ecto(database scheme).
+
 # DeviceManager
 
 To start your new Phoenix application:
